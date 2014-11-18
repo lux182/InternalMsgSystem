@@ -37,8 +37,10 @@ public class MessageGenerate {
 
     enum Hint {
     	USERNAME_HAS_NOT_EXIST("用户名不存在"),
+    	USERNAME_HAS_EXIST("用户名已存在"),
     	PASSWORD_DO_NOT_MATCH("密码错误"),
     	USER_HAS_BEEN_NOT_LOGIN("用户未登录"),
+    	CFG_INIT_SUCCESSFUL("配置更新成功"),
     	UNEXPECTED_EXCEPTION("未知异常"),
     	ID_HAS_NOT_EXIST("ID不存在")
     	;

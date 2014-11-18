@@ -18,9 +18,11 @@ public class SystemMessage {
     public class Hint {
 
         public static final String
+            CFG_INIT_SUCCESSFUL = "{Hint.CFG_INIT_SUCCESSFUL}",
             ID_HAS_NOT_EXIST = "{Hint.ID_HAS_NOT_EXIST}",
             PASSWORD_DO_NOT_MATCH = "{Hint.PASSWORD_DO_NOT_MATCH}",
             UNEXPECTED_EXCEPTION = "{Hint.UNEXPECTED_EXCEPTION}",
+            USERNAME_HAS_EXIST = "{Hint.USERNAME_HAS_EXIST}",
             USERNAME_HAS_NOT_EXIST = "{Hint.USERNAME_HAS_NOT_EXIST}",
             USER_HAS_BEEN_NOT_LOGIN = "{Hint.USER_HAS_BEEN_NOT_LOGIN}";
     }

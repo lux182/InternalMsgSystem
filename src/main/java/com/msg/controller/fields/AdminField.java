@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.msg.event.LoginEvent;
 import com.msg.utils.SystemMessage.Submit;
 
-public class LoginField {
+public class AdminField {
 	
 	@NotEmpty(message=Submit.USERNAME_COULD_NOT_BE_EMPTY)
 	private String username;

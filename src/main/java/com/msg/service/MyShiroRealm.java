@@ -27,6 +27,7 @@ public class MyShiroRealm extends AuthorizingRealm {
     static {
         shiroMap.put("/", "anon");
         shiroMap.put("/login", "anon");
+        shiroMap.put("/admin", "anon");
         shiroMap.put("/res/**", "anon");
         shiroMap.put("/api/**", "anon");
         shiroMap.put("/**", "authc");

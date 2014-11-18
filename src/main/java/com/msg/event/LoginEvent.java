@@ -2,14 +2,14 @@ package com.msg.event;
 
 import org.springframework.beans.BeanUtils;
 
-import com.msg.controller.fields.LoginField;
+import com.msg.controller.fields.AdminField;
 
 public class LoginEvent {
 	
 	private String username;
 	private String password;
 	
-	public LoginEvent(LoginField field) {
+	public LoginEvent(AdminField field) {
 		BeanUtils.copyProperties(field, this);
 	}
 	public String getUsername() {
