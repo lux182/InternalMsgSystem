@@ -13,6 +13,7 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -51,6 +52,10 @@ public class WebappConfig implements WebApplicationInitializer{
 				"encodingFilter", new CharacterEncodingFilter());
 		encodingFilter.setInitParameter("encoding", "UTF-8");
 		encodingFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "/*");
+		
+		FilterRegistration.Dynamic shiroFilter = servletContext.addFilter(
+				"shiroFilter",new DelegatingFilterProxy());
+		shiroFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "/*");
 		
 		OpenEntityManagerInViewFilter entityManagerFactory = new OpenEntityManagerInViewFilter();
 		entityManagerFactory.setEntityManagerFactoryBeanName("openSessionFactoryBean");

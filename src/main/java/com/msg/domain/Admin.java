@@ -11,12 +11,11 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @DynamicInsert
 @DynamicUpdate
-public class UserDevice {
+public class Admin {
 	
 	private Long id;
-	private Long aid;
-	private String userId;
-	private Long channelId;
+	private String username;
+	private byte[] password;
 	
 	@Id
 	@GeneratedValue
@@ -28,27 +27,20 @@ public class UserDevice {
 	}
 	
 	@Column(nullable=false,unique=true)
-	public Long getAid() {
-		return aid;
+	public String getUsername() {
+		return username;
 	}
-	public void setAid(Long aid) {
-		this.aid = aid;
-	}
-	
-	@Column(nullable=false)
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	@Column(nullable=false)
-	public Long getChannelId() {
-		return channelId;
+	public byte[] getPassword() {
+		return password;
 	}
-	public void setChannelId(Long channelId) {
-		this.channelId = channelId;
+	public void setPassword(byte[] password) {
+		this.password = password;
 	}
+	
 	
 }

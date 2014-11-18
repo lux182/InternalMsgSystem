@@ -8,7 +8,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
 import org.apache.log4j.Logger;
-import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -17,12 +16,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import com.msg.utils.NormalException;
 import com.msg.utils.Result;
-import com.msg.utils.SystemMessage.Hint;
-import com.msg.utils.SystemMessage.Submit;
 
 @ControllerAdvice
 public class GlobalExceptionHandlerController {
@@ -68,21 +64,6 @@ public class GlobalExceptionHandlerController {
 	@ResponseBody
 	public Object processMethodNotSupportedError(HttpRequestMethodNotSupportedException ex) {
 		return null;
-	}
-	
-	@ExceptionHandler(MaxUploadSizeExceededException.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ResponseBody
-	public Object processUploadError(MaxUploadSizeExceededException ex) {
-		logger.info("MaxUploadSizeExceededException Error", ex);
-		return Result.setMessage(Submit.PORTRAIT_IMAGE_SIZE_IS_TOO_BIG);
-	}
-	
-	@ExceptionHandler(AuthorizationException.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ResponseBody
-	public Object processAuthorizationException(AuthorizationException ex) {
-		return Result.setMessage(Hint.NO_CORRESPOND_PERMISSION);
 	}
 
 	@ExceptionHandler(Exception.class)

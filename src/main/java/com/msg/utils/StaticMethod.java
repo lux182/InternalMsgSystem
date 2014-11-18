@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
 import com.msg.config.SpringMVCConfig;
@@ -13,6 +14,10 @@ public class StaticMethod {
     private static MessageSource messageSource = SpringMVCConfig
             .getMessageSource();
 
+    public static byte[] generatePassword(String username, String password) {
+        return DigestUtils.md5Digest((password + username).getBytes());
+    }
+    
     public static String getIpAddress(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {

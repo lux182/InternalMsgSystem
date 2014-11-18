@@ -7,6 +7,12 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.apache.shiro.cache.MemoryConstrainedCacheManager;
+import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,6 +45,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
+import com.msg.service.MyShiroRealm;
 
 @Configuration
 @EnableWebMvc
@@ -158,7 +165,68 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
 	public MethodValidationPostProcessor methodValidationPostProcessor(){
 		return new MethodValidationPostProcessor();
 	} 
+//Shiro	
 	
+		@Bean
+		public MyShiroRealm configMyShiroRealm(){
+			return new MyShiroRealm();
+		}
+		
+		@Bean(name="sessionIdCookie")
+		public SimpleCookie sessionIdCookie(){
+			SimpleCookie sc = new SimpleCookie("sid");
+			sc.setHttpOnly(true);
+			sc.setMaxAge(-1);
+			return sc;
+		}
+		
+		@Bean(name="rememberMeManager")
+		public CookieRememberMeManager rememberMeManager(){
+			CookieRememberMeManager rm=new CookieRememberMeManager();
+			//rm.setCipherKey("#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}".getBytes());
+			SimpleCookie sc = new SimpleCookie("rememberMe");
+			sc.setHttpOnly(true);
+			sc.setMaxAge(2592000);
+			rm.setCookie(sc);
+			return rm;
+		}
+
+		@Bean
+		@Resource
+		public DefaultWebSecurityManager configDefaultWebSecurityManager(MyShiroRealm myShiroRealm,
+				CookieRememberMeManager rememberMeManager){
+			MemoryConstrainedCacheManager cacheManager = new MemoryConstrainedCacheManager();
+			DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+			securityManager.setRealm(myShiroRealm);
+			myShiroRealm.setCacheManager(cacheManager);
+			securityManager.setCacheManager(cacheManager);
+			securityManager.setRememberMeManager(rememberMeManager);
+			return securityManager;
+		}
+		
+		@Bean(name="shiroFilter")
+		@Resource
+		public ShiroFilterFactoryBean configShiroFilterFactoryBean(
+				DefaultWebSecurityManager securityManager){
+					
+			ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
+			shiroFilter.setSecurityManager(securityManager);
+			shiroFilter.setLoginUrl("/");
+			shiroFilter.setSuccessUrl("/");
+			shiroFilter.setUnauthorizedUrl("/");
+			shiroFilter.setFilterChainDefinitionMap(MyShiroRealm.shiroMap);
+			return shiroFilter;
+		}
+
+		
+		@Bean
+		@Resource
+		public AuthorizationAttributeSourceAdvisor configAuthorizationAttributeSourceAdvisor(
+				DefaultWebSecurityManager securityManager){
+			AuthorizationAttributeSourceAdvisor author = new AuthorizationAttributeSourceAdvisor();
+			author.setSecurityManager(securityManager);
+			return author;
+		}
 //File upload 
 	@Bean(name="multipartResolver")
 	public CommonsMultipartResolver commonsMultipartResolver(){

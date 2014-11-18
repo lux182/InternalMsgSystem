@@ -13,6 +13,15 @@ import org.springframework.util.StringUtils;
 public class MessageGenerate {
 
     enum Submit {
+    	USERNAME_COULD_NOT_BE_EMPTY("用户名不能为空"),
+        PASSWORD_COULD_NOT_BE_EMPTY("密码不能为空"),
+    	SUBMIT_CONTENT_TOO_BIG("提交内容超出限定范围"),
+    	EMAIL_COULD_NOT_BE_EMPTY("联系邮箱不能为空"),
+        EMAIL_COMPOSE_ERROR("邮箱格式不正确"),
+        EMAIL_LENGTH_ERROR("邮箱长度超出限制"),
+        PHONE_NUMBER_COULD_NOT_BE_EMPTY("手机号码不能为空"),
+        PHONE_NUMBER_COMPOSE_ERROR("手机号码格式不正确"),
+        PHONE_NUMBER_LENGTH_ERROR("手机号码长度超出限制"),
                 ;
         String value;
 
@@ -27,7 +36,12 @@ public class MessageGenerate {
     }
 
     enum Hint {
-        ;
+    	USERNAME_HAS_NOT_EXIST("用户名不存在"),
+    	PASSWORD_DO_NOT_MATCH("密码错误"),
+    	USER_HAS_BEEN_NOT_LOGIN("用户未登录"),
+    	UNEXPECTED_EXCEPTION("未知异常"),
+    	ID_HAS_NOT_EXIST("ID不存在")
+    	;
         String value;
 
         private Hint(String value) {
@@ -147,6 +161,6 @@ public class MessageGenerate {
             + "        public static final String\n" 
             + "{content}"
             + "\n"
-            + "}";
+            + "    }";
 
 }
