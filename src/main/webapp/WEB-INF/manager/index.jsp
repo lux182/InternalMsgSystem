@@ -15,16 +15,17 @@
 			<div class="tabbable" id="tabs">
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a href="#panel-base" data-toggle="tab">系统基本参数</a>
-					</li>
-					<li>
 						<a href="#panel-msg" data-toggle="tab">信息管理</a>
 					</li>
+					<li>
+						<a href="#panel-base" data-toggle="tab">系统基本参数</a>
+					</li>
+					
 				</ul>
 				
 				<div class="tab-content" style="padding:10px;">
 					<!-- base tab -->
-					<div class="tab-pane active" id="panel-base">
+					<div class="tab-pane" id="panel-base">
 						
 						<!-- cfg configuration -->
 						<div class="col-xs-6">
@@ -49,11 +50,11 @@
 					</div>
 					
 					<!-- msg tab -->
-					<div class="tab-pane" id="panel-msg">
+					<div class="tab-pane active" id="panel-msg">
 						<!-- Message publish -->
 						<div class="col-xs-6">
 							<div class="panel panel-default">
-							  <div class="panel-heading">发送站内消息</div>
+							  <div class="panel-heading">发送消息</div>
 							  <div class="panel-body">
 							    <form action="/api/msg" method="post" class="form-horizontal" style="padding:10px;">
 							    	<div class="form-group">
@@ -63,12 +64,32 @@
 								    	</div>
 								    </div>
 								    <div class="form-group">
-								    	<div class="input-group">
-								     	 <div class="input-group-addon">Content</div>
-								     	 <input class="form-control" type="text" name="content" placeholder="Message Content">
-								    	</div>
+								     	<lable>Content</lable>
+								    	<textarea class="form-control" type="text" name="content" placeholder="Message Content" style="height: 150px;"></textarea>
 								    </div>
 								    
+								    <div class="form-group" id="emailDiv" style="display:none">
+								    	<div class="input-group">
+								     	 <div class="input-group-addon">Email</div>
+								     	 <input class="form-control" type="email" name="email" placeholder="Reciver's Email">
+								    	</div>
+								    </div>
+								    <div class="form-group" id="phoneDiv" style="display:none">
+								    	<div class="input-group">
+								     	 <div class="input-group-addon">Phone</div>
+								     	 <input class="form-control" type="number" name="phone" placeholder="Reciver's Phone">
+								    	</div>
+								    </div>
+								    <div class="form-group">
+								    	<lable>Channel</lable>
+								    	<select name="chanel" class="form-control" id="channelSelect">
+										  <option value=1>站内信</option>
+										  <option value=2>Baidu推送</option>
+										  <option value=3>短信通知</option>
+										  <option value=4>Email</option>
+										</select>
+								    </div>
+									
 								    <div class="form-group" id="indateDiv" style="display:none">
 								    	<div class="input-group">
 								     	 <div class="input-group-addon">Indate Days(天)</div>
@@ -152,6 +173,22 @@
 		});
 		$("#indateCheck").click(function(){
 			$("#indateDiv").toggle();
+		});
+		$("#channelSelect").change(function(){
+			if($("#channelSelect").val()==3){
+				$("#phoneDiv").show();
+				$("#emailDiv").hide();
+				$(".checkbox").hide();
+			}else if($("#channelSelect").val()==4){
+				$("#emailDiv").show();
+				$("#phoneDiv").hide();
+				$(".checkbox").hide();
+			}
+			else{
+				$("#emailDiv").hide();
+				$("#phoneDiv").hide();
+				$(".checkbox").show();
+			}
 		});
 	});
 </script>
