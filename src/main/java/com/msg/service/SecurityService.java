@@ -17,6 +17,6 @@ public interface SecurityService {
 
 	public boolean isAccessAuth();
 	
-	public @NotNull(message = Hint.USER_HAS_BEEN_NOT_LOGIN) Admin getAuthedUser();
+	public Admin getAuthedUser();
 	
 }

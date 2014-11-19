@@ -14,4 +14,6 @@ public class Views {
 	//manager views
 	public static final String MANAGER_INDEX_PAGE = managerPath+"index";
 	
+	public static final String REDIRECT_MANAGER_INDEX_CONTROLLER="redirect:/admin";
+	
 }

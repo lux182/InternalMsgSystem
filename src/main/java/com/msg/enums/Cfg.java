@@ -1,18 +1,20 @@
 package com.msg.enums;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum Cfg {
 	//Rabbit mq
-	SL_RABBIT_MQ_EXCHANGE_NAME,
-	SL_RABBIT_MQ_SERVER_HOST,
-	SL_RABBIT_MQ_SERVER_HOST_PORT,
-	SL_RABBIT_MQ_USER_NAME,
-	SL_RABBIT_MQ_PASSWORD,
-	SL_RABBIT_MQ_VHOST,
-	SL_RABBIT_MQ_IS_ENABLED,
+	RABBIT_MQ_EXCHANGE_NAME,
+	RABBIT_MQ_SERVER_HOST,
+	RABBIT_MQ_SERVER_HOST_PORT,
+	RABBIT_MQ_USER_NAME,
+	RABBIT_MQ_PASSWORD,
+	RABBIT_MQ_VHOST,
 	
 	//Baidu push serivce
-	LC_BAIDU_PUSH_API_KEY,
-	LC_BAIDU_PUSH_SECRET_KEY
+	BAIDU_PUSH_API_KEY,
+	BAIDU_PUSH_SECRET_KEY
 	;
 	private String value;
 
@@ -23,5 +25,13 @@ public enum Cfg {
 
 	public void setValue(String value) {
 		this.value = value;
+	}
+	
+	public static List<String> names(){
+		ArrayList<String> cfgNames = new ArrayList<String>();
+		for(Cfg cfg : Cfg.values()){
+			cfgNames.add(cfg.name());
+		}
+		return cfgNames;
 	}
 }

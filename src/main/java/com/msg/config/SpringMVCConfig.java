@@ -20,6 +20,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -256,4 +257,5 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
 		taskManager.setMaxPoolSize(30);
 		return taskManager;
 	}
+	
 }

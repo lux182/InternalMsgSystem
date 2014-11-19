@@ -16,6 +16,7 @@ public class Admin {
 	private Long id;
 	private String username;
 	private byte[] password;
+	private String nickname;
 	
 	@Id
 	@GeneratedValue
@@ -40,6 +41,14 @@ public class Admin {
 	}
 	public void setPassword(byte[] password) {
 		this.password = password;
+	}
+	
+	@Column(nullable=false)
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 	

@@ -24,8 +24,9 @@ public class Message {
 	
 	private Long id;
 	private Long sendId;
+	private String senderName;
 	private String title;
-	private String context;
+	private String content;
 	private Date pubdate;
 	private Date indate;
 	private MessageType type;
@@ -46,6 +47,12 @@ public class Message {
 	public void setSendId(Long sendId) {
 		this.sendId = sendId;
 	}
+	public String getSenderName() {
+		return senderName;
+	}
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -53,11 +60,11 @@ public class Message {
 		this.title = title;
 	}
 	@Column(nullable=false)
-	public String getContext() {
-		return context;
+	public String getContent() {
+		return content;
 	}
-	public void setContext(String context) {
-		this.context = context;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)

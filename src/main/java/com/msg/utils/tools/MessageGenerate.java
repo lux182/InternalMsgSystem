@@ -22,6 +22,10 @@ public class MessageGenerate {
         PHONE_NUMBER_COULD_NOT_BE_EMPTY("手机号码不能为空"),
         PHONE_NUMBER_COMPOSE_ERROR("手机号码格式不正确"),
         PHONE_NUMBER_LENGTH_ERROR("手机号码长度超出限制"),
+        MESSAGE_TITLE_COULD_NOT_BE_EMPTY("消息标题不能为空"),
+        MESSAGE_CONTENT_COULD_NOT_BE_EMPTY("消息内容不能为空"),
+        DATE_FORMAT_ERROR("日期格式错误"),
+        INDATE_ERROR("有效时间错误")
                 ;
         String value;
 
@@ -36,13 +40,16 @@ public class MessageGenerate {
     }
 
     enum Hint {
+    	LOGIN_SUCCESSFUL("登录成功"),
     	USERNAME_HAS_NOT_EXIST("用户名不存在"),
     	USERNAME_HAS_EXIST("用户名已存在"),
     	PASSWORD_DO_NOT_MATCH("密码错误"),
     	USER_HAS_BEEN_NOT_LOGIN("用户未登录"),
-    	CFG_INIT_SUCCESSFUL("配置更新成功"),
+    	CFG_UPDATE_SUCCESSFUL("配置更新成功"),
     	UNEXPECTED_EXCEPTION("未知异常"),
-    	ID_HAS_NOT_EXIST("ID不存在")
+    	ID_HAS_NOT_EXIST("ID不存在"),
+    	INTERNAL_MESSAGE_HAS_SEND("信息已通过站内信方式发送"),
+    	PRIVATE_MESSAGE_HAVE_TO_SET_SENDER("私信必须指定发送者")
     	;
         String value;
 

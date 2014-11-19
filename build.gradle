@@ -47,6 +47,7 @@ dependencies {
     compile 'org.apache.httpcomponents:httpclient:4.3.5'
     compile 'com.alibaba:fastjson:1.1.41'
     compile 'org.jsoup:jsoup:1.7.3'
+    compile 'org.quartz-scheduler:quartz:2.2.1'
     providedCompile 'org.apache.tomcat:tomcat-servlet-api:8.0.9'
     providedRuntime 'org.apache.tomcat:tomcat-servlet-api:8.0.9'
 }

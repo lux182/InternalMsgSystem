@@ -8,23 +8,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.msg.controller.fields.AdminField;
-import com.msg.service.SecurityService;
+import com.msg.controller.fields.MsgField;
+import com.msg.service.MessageService;
 import com.msg.utils.Result;
-import com.msg.utils.Views;
 import com.msg.utils.SystemMessage.Hint;
 
 @Controller
-@RequestMapping("login")
-public class LoginController {
-
-	@Resource
-	SecurityService securityService;
+@RequestMapping("api")
+public class ApiController {
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@Resource
+	MessageService messageService;
+	
+	@RequestMapping(value="msg",method=RequestMethod.POST)
 	@ResponseBody
-	public Object doLogin(@Valid AdminField field){
-		securityService.login(field.toEvent());
-		return Result.setMessage(Hint.LOGIN_SUCCESSFUL).setRedirectUrl("/");
+	public Object sendInternalMsg(@Valid MsgField fields){
+		messageService.sendMessage(fields.toSendMessageEvent());
+		return Result.setMessage(Hint.INTERNAL_MESSAGE_HAS_SEND);
 	}
 }

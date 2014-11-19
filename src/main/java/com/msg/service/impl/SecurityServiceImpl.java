@@ -11,6 +11,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ import com.msg.event.LoginEvent;
 import com.msg.repo.AdminRepo;
 import com.msg.service.SecurityService;
 import com.msg.utils.NormalException;
+import com.msg.utils.SessionConstant;
 import com.msg.utils.SystemMessage.Hint;
 @Service
 public class SecurityServiceImpl implements SecurityService {
@@ -63,9 +65,25 @@ public class SecurityServiceImpl implements SecurityService {
 	
 	@Override
 	public Admin getAuthedUser() {
-		String username = (String) SecurityUtils.getSubject().getPrincipal();
+		Subject currentUser = SecurityUtils.getSubject();
+        if (null != currentUser) {
+            Session session = currentUser.getSession();
+            if(null != session){
+            	Admin admin = (Admin) session.getAttribute(SessionConstant.USER);
+            	if(null!=admin){
+            		return admin;
+            	}
+            }
+        }
+        
+		String username = (String) currentUser.getPrincipal();
 		if (!StringUtils.isEmpty(username)) {
-			return adminRepo.findByUsername(username);
+			Admin admin = adminRepo.findByUsername(username);
+			Session session = currentUser.getSession();
+            if(null != session){
+            	session.setAttribute(SessionConstant.USER,admin);
+            }
+			return admin;
 		}
 		return null;
 	}

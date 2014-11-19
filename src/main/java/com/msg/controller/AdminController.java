@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.msg.controller.fields.AdminField;
 import com.msg.service.AdminService;
+import com.msg.service.ViewService;
+import com.msg.utils.Views;
 
 @Controller
 @RequestMapping("admin")
@@ -18,9 +21,11 @@ public class AdminController {
 	@Resource
 	AdminService adminService;
 	
+	@Resource
+	ViewService viewService;
+	
 	@RequestMapping(method=RequestMethod.GET)
-	@ResponseBody
-	public Object createAdmin(@Valid AdminField field){
-		return adminService.createAdmin(field.getUsername(),field.getPassword());
+	public ModelAndView createAdmin(){
+		return viewService.model(Views.MANAGER_INDEX_PAGE).putCfgs().putMessage().build();
 	}
 }

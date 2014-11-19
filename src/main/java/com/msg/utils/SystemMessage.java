@@ -5,9 +5,13 @@ public class SystemMessage {
     public class Submit {
 
         public static final String
+            DATE_FORMAT_ERROR = "{Submit.DATE_FORMAT_ERROR}",
             EMAIL_COMPOSE_ERROR = "{Submit.EMAIL_COMPOSE_ERROR}",
             EMAIL_COULD_NOT_BE_EMPTY = "{Submit.EMAIL_COULD_NOT_BE_EMPTY}",
             EMAIL_LENGTH_ERROR = "{Submit.EMAIL_LENGTH_ERROR}",
+            INDATE_ERROR = "{Submit.INDATE_ERROR}",
+            MESSAGE_CONTENT_COULD_NOT_BE_EMPTY = "{Submit.MESSAGE_CONTENT_COULD_NOT_BE_EMPTY}",
+            MESSAGE_TITLE_COULD_NOT_BE_EMPTY = "{Submit.MESSAGE_TITLE_COULD_NOT_BE_EMPTY}",
             PASSWORD_COULD_NOT_BE_EMPTY = "{Submit.PASSWORD_COULD_NOT_BE_EMPTY}",
             PHONE_NUMBER_COMPOSE_ERROR = "{Submit.PHONE_NUMBER_COMPOSE_ERROR}",
             PHONE_NUMBER_COULD_NOT_BE_EMPTY = "{Submit.PHONE_NUMBER_COULD_NOT_BE_EMPTY}",
@@ -18,9 +22,12 @@ public class SystemMessage {
     public class Hint {
 
         public static final String
-            CFG_INIT_SUCCESSFUL = "{Hint.CFG_INIT_SUCCESSFUL}",
+            CFG_UPDATE_SUCCESSFUL = "{Hint.CFG_UPDATE_SUCCESSFUL}",
             ID_HAS_NOT_EXIST = "{Hint.ID_HAS_NOT_EXIST}",
+            INTERNAL_MESSAGE_HAS_SEND = "{Hint.INTERNAL_MESSAGE_HAS_SEND}",
+            LOGIN_SUCCESSFUL = "{Hint.LOGIN_SUCCESSFUL}",
             PASSWORD_DO_NOT_MATCH = "{Hint.PASSWORD_DO_NOT_MATCH}",
+            PRIVATE_MESSAGE_HAVE_TO_SET_SENDER = "{Hint.PRIVATE_MESSAGE_HAVE_TO_SET_SENDER}",
             UNEXPECTED_EXCEPTION = "{Hint.UNEXPECTED_EXCEPTION}",
             USERNAME_HAS_EXIST = "{Hint.USERNAME_HAS_EXIST}",
             USERNAME_HAS_NOT_EXIST = "{Hint.USERNAME_HAS_NOT_EXIST}",

@@ -9,8 +9,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://cdn.bootcss.com/animate.css/3.2.0/animate.min.css" rel="stylesheet">
+		<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 		<style>
-        	.alert{margin-bottom:20px;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+        	.alert{position:absolute;width:100%; margin-top:20px;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
         	.alert,.alert h4{color:#c09853;}
         	.alert-success{background-color:#dff0d8;border-color:#d6e9c6;color:#468847;}
 			.alert-success h4{color:#468847;}
@@ -19,3 +21,13 @@
         </style>
     </head>
     <body>
+    <div class="container">
+		<div class="row col-md-10 col-md-offset-1">
+			<div class="span12">
+				<div id="alert" style="display: none;" class="alert alert-success" >
+					<button type="button" class="close" id="alertCloseBtn">×</button>
+					<span id="message"></span>
+				</div>
+			</div>
+		</div>
+	</div>
