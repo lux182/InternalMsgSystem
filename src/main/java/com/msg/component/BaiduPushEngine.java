@@ -3,8 +3,12 @@ package com.msg.component;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import javax.annotation.Resource;
 
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import com.alibaba.fastjson.JSON;
 import com.baidu.yun.channel.auth.ChannelKeyPair;
 import com.baidu.yun.channel.client.BaiduChannelClient;
 import com.baidu.yun.channel.exception.ChannelClientException;
@@ -27,15 +31,22 @@ import com.baidu.yun.channel.model.SetTagRequest;
 import com.baidu.yun.channel.model.TagInfo;
 import com.baidu.yun.channel.model.UpdateAppIoscertRequest;
 import com.baidu.yun.channel.model.VerifyBindRequest;
+import com.msg.domain.UserDevice;
 import com.msg.enums.Cfg;
+import com.msg.enums.MessageType;
 import com.msg.enums.SendChannel;
 import com.msg.event.SendMessageEvent;
+import com.msg.repo.UserDeviceRepo;
+import com.msg.utils.NormalException;
+import com.msg.utils.SystemMessage.Hint;
 import com.msg.wrapper.DeviceBindInfo;
 import com.msg.wrapper.NotificationMessage;
 
 @Component
 public class BaiduPushEngine extends SendEngine {
 
+	@Resource
+	UserDeviceRepo userDeviceRepo;
 	
 	public BaiduPushEngine() {
 		this.register(SendChannel.BAIDU_PUSH);
@@ -43,10 +54,28 @@ public class BaiduPushEngine extends SendEngine {
 
 	@Override
 	public void send(SendMessageEvent event) {
-		if(channelClient==null){
-			this.init();
+		NotificationMessage msg = new NotificationMessage();
+		msg.setTitle(event.getTitle());
+		msg.setDescription(event.getContent());
+		if(StringUtils.isEmpty(event.getUrl())){
+			msg.setOpenType(2);
+		}else{
+			msg.setUrl(event.getUrl());
+			msg.setOpenType(1);
 		}
 		
+		if(MessageType.PUBLIC.equals(event.getType())){
+			if(this.pushBroadcastNotificationMessage(msg)==0){
+				throw new NormalException(Hint.BAIDU_PUSH_ERROR);
+			}
+		}else if(MessageType.PRIVATE.equals(event.getType())){
+			UserDevice device = userDeviceRepo.findByAid(event.getRecId());
+			if(device!=null){
+				if(this.pushUnicastNotificationMessage(device.getUserId(), device.getChannelId(), msg)==0){
+					throw new NormalException(Hint.BAIDU_PUSH_ERROR);
+				}
+			}
+		}
 	}
 	
 	
@@ -65,7 +94,7 @@ public class BaiduPushEngine extends SendEngine {
         NONE, BROWSER, PC, ANDROID, IOS, WINPHONE;
     }
 
-    private void init() {
+    public void initEngine() {
         channelClient = new BaiduChannelClient(new ChannelKeyPair(
                 Cfg.BAIDU_PUSH_API_KEY.getValue(), Cfg.BAIDU_PUSH_SECRET_KEY.getValue()));
     }

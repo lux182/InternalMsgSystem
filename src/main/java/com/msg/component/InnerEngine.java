@@ -106,4 +106,9 @@ public class InnerEngine extends SendEngine{
 		}
 	}
 
+	@Override
+	public void initEngine() {
+		
+	}
+
 }

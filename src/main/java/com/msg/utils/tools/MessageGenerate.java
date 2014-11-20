@@ -25,7 +25,10 @@ public class MessageGenerate {
         MESSAGE_TITLE_COULD_NOT_BE_EMPTY("消息标题不能为空"),
         MESSAGE_CONTENT_COULD_NOT_BE_EMPTY("消息内容不能为空"),
         DATE_FORMAT_ERROR("日期格式错误"),
-        INDATE_ERROR("有效时间错误")
+        INDATE_ERROR("有效时间错误"),
+        AID_COULD_NOT_BE_NULL("aid不能为空"),
+        USERID_COULD_NOT_BE_NULL("userId不能为空"),
+        CHANNELID_COULD_NOT_BE_NULL("channelId不能为空")
                 ;
         String value;
 
@@ -48,9 +51,10 @@ public class MessageGenerate {
     	CFG_UPDATE_SUCCESSFUL("配置更新成功"),
     	UNEXPECTED_EXCEPTION("未知异常"),
     	ID_HAS_NOT_EXIST("ID不存在"),
-    	INTERNAL_MESSAGE_HAS_SEND("信息已通过站内信方式发送"),
+    	MESSAGE_HAS_SEND("信息已发送"),
     	PRIVATE_MESSAGE_HAVE_TO_SET_SENDER("私信必须指定发送者"),
-    	NOT_SUPPORT_CHANNEL("不支持的发送方式")
+    	NOT_SUPPORT_CHANNEL("不支持的发送方式"),
+    	BAIDU_PUSH_ERROR("信息未发送成功，请检查百度推送配置")
     	;
         String value;
 

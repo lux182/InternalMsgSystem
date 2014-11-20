@@ -27,6 +27,14 @@ public class MsgField {
 	@PhoneNumber(emptyable=true)
 	private String phone;
 	
+	private String url;
+	
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	private SendChannel chanel;
 	
 	private boolean persistence=false;

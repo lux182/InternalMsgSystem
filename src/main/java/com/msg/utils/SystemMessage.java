@@ -5,6 +5,8 @@ public class SystemMessage {
     public class Submit {
 
         public static final String
+            AID_COULD_NOT_BE_NULL = "{Submit.AID_COULD_NOT_BE_NULL}",
+            CHANNELID_COULD_NOT_BE_NULL = "{Submit.CHANNELID_COULD_NOT_BE_NULL}",
             DATE_FORMAT_ERROR = "{Submit.DATE_FORMAT_ERROR}",
             EMAIL_COMPOSE_ERROR = "{Submit.EMAIL_COMPOSE_ERROR}",
             EMAIL_COULD_NOT_BE_EMPTY = "{Submit.EMAIL_COULD_NOT_BE_EMPTY}",
@@ -17,15 +19,17 @@ public class SystemMessage {
             PHONE_NUMBER_COULD_NOT_BE_EMPTY = "{Submit.PHONE_NUMBER_COULD_NOT_BE_EMPTY}",
             PHONE_NUMBER_LENGTH_ERROR = "{Submit.PHONE_NUMBER_LENGTH_ERROR}",
             SUBMIT_CONTENT_TOO_BIG = "{Submit.SUBMIT_CONTENT_TOO_BIG}",
+            USERID_COULD_NOT_BE_NULL = "{Submit.USERID_COULD_NOT_BE_NULL}",
             USERNAME_COULD_NOT_BE_EMPTY = "{Submit.USERNAME_COULD_NOT_BE_EMPTY}";
     }
     public class Hint {
 
         public static final String
+            BAIDU_PUSH_ERROR = "{Hint.BAIDU_PUSH_ERROR}",
             CFG_UPDATE_SUCCESSFUL = "{Hint.CFG_UPDATE_SUCCESSFUL}",
             ID_HAS_NOT_EXIST = "{Hint.ID_HAS_NOT_EXIST}",
-            INTERNAL_MESSAGE_HAS_SEND = "{Hint.INTERNAL_MESSAGE_HAS_SEND}",
             LOGIN_SUCCESSFUL = "{Hint.LOGIN_SUCCESSFUL}",
+            MESSAGE_HAS_SEND = "{Hint.MESSAGE_HAS_SEND}",
             NOT_SUPPORT_CHANNEL = "{Hint.NOT_SUPPORT_CHANNEL}",
             PASSWORD_DO_NOT_MATCH = "{Hint.PASSWORD_DO_NOT_MATCH}",
             PRIVATE_MESSAGE_HAVE_TO_SET_SENDER = "{Hint.PRIVATE_MESSAGE_HAVE_TO_SET_SENDER}",

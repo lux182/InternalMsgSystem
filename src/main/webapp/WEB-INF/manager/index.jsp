@@ -74,20 +74,17 @@
 								     	 <input class="form-control" type="email" name="email" placeholder="Reciver's Email">
 								    	</div>
 								    </div>
+								    <div class="form-group" id="urlDiv" style="display:none">
+								    	<div class="input-group">
+								     	 <div class="input-group-addon">URL</div>
+								     	 <input class="form-control" type="text" name="url" placeholder="Open URL">
+								    	</div>
+								    </div>
 								    <div class="form-group" id="phoneDiv" style="display:none">
 								    	<div class="input-group">
 								     	 <div class="input-group-addon">Phone</div>
 								     	 <input class="form-control" type="text" name="phone" placeholder="Reciver's Phone">
 								    	</div>
-								    </div>
-								    <div class="form-group">
-								    	<lable>Channel</lable>
-								    	<select name="chanel" class="form-control" id="channelSelect">
-										  <option value="INNER" selected>站内信</option>
-										  <option value="BAIDU_PUSH">Baidu推送</option>
-										  <option value="SMS">短信通知</option>
-										  <option value="EMAIL">Email</option>
-										</select>
 								    </div>
 									
 								    <div class="form-group" id="indateDiv" style="display:none">
@@ -101,6 +98,15 @@
 								     	 <div class="input-group-addon">Admin Send To</div>
 								     	 <input class="form-control" type="text" name="recId" placeholder="Message Recevier ID">
 								    	</div>
+								    </div>
+								    <div class="form-group">
+								    	<lable>Channel</lable>
+								    	<select name="chanel" class="form-control" id="channelSelect">
+										  <option value="INNER" selected>站内信</option>
+										  <option value="BAIDU_PUSH">Baidu推送</option>
+										  <option value="SMS">短信通知</option>
+										  <option value="EMAIL">Email</option>
+										</select>
 								    </div>
 								    <div class="checkbox">
 								     <label id="persistenceLable">
@@ -205,6 +211,12 @@
 				$("#persistenceCheck").attr('disabled',true);
 			}else{
 				$("#persistenceCheck").attr('disabled',false);
+			}
+			
+			if($("#channelSelect").val()=="BAIDU_PUSH"){
+				$("#urlDiv").show();
+			}else{
+				$("#urlDiv").hide()
 			}
 		});
 	});

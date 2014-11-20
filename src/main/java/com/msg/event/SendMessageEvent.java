@@ -22,7 +22,16 @@ public class SendMessageEvent {
 	private String phone;
 	private SendChannel chanel;
 	private boolean persistence;
+	private String url;
 	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public SendMessageEvent(MsgField fields) {
 		BeanUtils.copyProperties(fields, this);
 		if(this.timeLimit){

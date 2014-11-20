@@ -17,4 +17,9 @@ public class SmsEngine extends SendEngine{
 		System.out.print("SMS");
 	}
 
+	@Override
+	public void initEngine() {
+		
+	}
+
 }

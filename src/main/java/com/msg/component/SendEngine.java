@@ -19,6 +19,8 @@ public abstract class SendEngine {
 		
 	public abstract void send(@NotNull SendMessageEvent event);
 	
+	public abstract void initEngine();
+	
 	public void register(@NotNull SendChannel channel){
 		SendEngine.MAP.put(channel, this);
 	}
@@ -28,6 +30,12 @@ public abstract class SendEngine {
 			throw new NormalException(Hint.NOT_SUPPORT_CHANNEL);
 		}else{
 			SendEngine.MAP.get(event.getChanel()).send(event);
+		}
+	}
+	
+	public static void init(){
+		for(SendEngine engine:SendEngine.MAP.values()){
+			engine.initEngine();
 		}
 	}
 }

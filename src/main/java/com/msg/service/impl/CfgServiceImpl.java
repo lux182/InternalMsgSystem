@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.msg.component.SendEngine;
 import com.msg.domain.CfgDomain;
 import com.msg.enums.Cfg;
 import com.msg.repo.CfgRepo;
@@ -26,6 +27,7 @@ public class CfgServiceImpl extends BaseServiceImpl<CfgDomain> implements CfgSer
 		this.cfgRepo = cfgRepo;
 		this.initCfg();
 		logger.info("Cfg init successful");
+		SendEngine.init();
 	}
 
 	@Override
@@ -59,6 +61,7 @@ public class CfgServiceImpl extends BaseServiceImpl<CfgDomain> implements CfgSer
 				}
 			}
 		}
+		SendEngine.init();
 	}
 	
 }

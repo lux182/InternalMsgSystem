@@ -17,4 +17,10 @@ public class EmailEngine extends SendEngine{
 		System.out.print("Email");
 	}
 
+	@Override
+	public void initEngine() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
