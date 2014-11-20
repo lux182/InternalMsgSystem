@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.msg.enums.MessageStatus;
 
 @Entity
@@ -40,6 +41,7 @@ public class MessageLog {
 		this.recId = recId;
 	}
 	
+	@JsonIgnore
 	@ManyToOne
 	public Message getMessage() {
 		return message;

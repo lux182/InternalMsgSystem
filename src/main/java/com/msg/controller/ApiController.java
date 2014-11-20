@@ -4,11 +4,13 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.msg.controller.fields.MsgField;
+import com.msg.controller.fields.PageField;
 import com.msg.controller.fields.UserDeviceField;
 import com.msg.service.MessageService;
 import com.msg.service.UserDeviceService;
@@ -32,6 +34,16 @@ public class ApiController {
 		return Result.setMessage(Hint.MESSAGE_HAS_SEND);
 	}
 	
+	@RequestMapping(value="unreadMsg/{recId}",method=RequestMethod.GET)
+	@ResponseBody
+	public Object getUnreadMsg(@PathVariable Long recId,PageField fields){
+		return messageService.getUnreadMsg(fields.toPageEvent(recId));
+	}
+	@RequestMapping(value="readMsg/{recId}",method=RequestMethod.GET)
+	@ResponseBody
+	public Object sendInternalMsg(@PathVariable Long recId,PageField fields){		
+		return messageService.getReadMsg(fields.toPageEvent(recId));
+	}
 	@RequestMapping(value="userDevice",method=RequestMethod.POST)
 	@ResponseBody
 	public Object sendInternalMsg(@Valid UserDeviceField fields){

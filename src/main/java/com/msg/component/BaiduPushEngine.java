@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.alibaba.fastjson.JSON;
 import com.baidu.yun.channel.auth.ChannelKeyPair;
 import com.baidu.yun.channel.client.BaiduChannelClient;
 import com.baidu.yun.channel.exception.ChannelClientException;

@@ -1,6 +1,7 @@
 package com.msg.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,6 +17,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.msg.enums.MessageType;
 
 @Entity
@@ -30,6 +33,7 @@ public class Message {
 	private Date pubdate;
 	private Date indate;
 	private MessageType type;
+	private List<MessageLog> messageLog;
 	
 	@Id
 	@GeneratedValue
@@ -88,6 +92,15 @@ public class Message {
 	}
 	public void setType(MessageType type) {
 		this.type = type;
+	}
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="message")
+	public List<MessageLog> getMessageLog() {
+		return messageLog;
+	}
+	public void setMessageLog(List<MessageLog> messageLog) {
+		this.messageLog = messageLog;
 	}
 	
 }
