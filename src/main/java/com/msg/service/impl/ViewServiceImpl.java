@@ -2,14 +2,12 @@ package com.msg.service.impl;
 
 import javax.annotation.Resource;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.msg.enums.Cfg;
-import com.msg.service.MessageLogService;
 import com.msg.service.MessageService;
 import com.msg.service.ViewService;
 

@@ -1,13 +1,12 @@
 package com.msg.event;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.BeanUtils;
 
 import com.msg.controller.fields.MsgField;
 import com.msg.enums.MessageType;
-import com.msg.utils.DateFormat;
+import com.msg.enums.SendChannel;
 
 public class SendMessageEvent {
 	
@@ -19,6 +18,10 @@ public class SendMessageEvent {
 	private Date indate;
 	private MessageType type = MessageType.PUBLIC;
 	private Long recId;
+	private String email;
+	private String phone;
+	private SendChannel chanel;
+	private boolean persistence;
 	
 	public SendMessageEvent(MsgField fields) {
 		BeanUtils.copyProperties(fields, this);
@@ -91,6 +94,38 @@ public class SendMessageEvent {
 
 	public void setRecId(Long recId) {
 		this.recId = recId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public SendChannel getChanel() {
+		return chanel;
+	}
+
+	public void setChanel(SendChannel chanel) {
+		this.chanel = chanel;
+	}
+
+	public boolean isPersistence() {
+		return persistence;
+	}
+
+	public void setPersistence(boolean persistence) {
+		this.persistence = persistence;
 	}
 	
 }

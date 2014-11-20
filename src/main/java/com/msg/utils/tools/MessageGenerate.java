@@ -49,7 +49,8 @@ public class MessageGenerate {
     	UNEXPECTED_EXCEPTION("未知异常"),
     	ID_HAS_NOT_EXIST("ID不存在"),
     	INTERNAL_MESSAGE_HAS_SEND("信息已通过站内信方式发送"),
-    	PRIVATE_MESSAGE_HAVE_TO_SET_SENDER("私信必须指定发送者")
+    	PRIVATE_MESSAGE_HAVE_TO_SET_SENDER("私信必须指定发送者"),
+    	NOT_SUPPORT_CHANNEL("不支持的发送方式")
     	;
         String value;
 

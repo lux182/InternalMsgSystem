@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.msg.controller.fields.AdminField;
 import com.msg.service.SecurityService;
 import com.msg.utils.Result;
-import com.msg.utils.Views;
 import com.msg.utils.SystemMessage.Hint;
 
 @Controller

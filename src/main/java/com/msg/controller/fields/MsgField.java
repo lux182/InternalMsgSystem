@@ -3,12 +3,14 @@ package com.msg.controller.fields;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.msg.enums.MessageType;
+import com.msg.enums.SendChannel;
 import com.msg.event.SendMessageEvent;
 import com.msg.utils.SystemMessage.Submit;
+import com.msg.validator.Email;
+import com.msg.validator.PhoneNumber;
 
 public class MsgField {
 	
-	@NotEmpty(message=Submit.MESSAGE_TITLE_COULD_NOT_BE_EMPTY)
 	private String title;
 	
 	@NotEmpty(message=Submit.MESSAGE_CONTENT_COULD_NOT_BE_EMPTY)
@@ -19,6 +21,15 @@ public class MsgField {
 	private MessageType type = MessageType.PUBLIC;
 	private Long recId;
 	
+	@Email(emptyable=true)
+	private String email;
+	
+	@PhoneNumber(emptyable=true)
+	private String phone;
+	
+	private SendChannel chanel;
+	
+	private boolean persistence=false;
 	
 	public String getTitle() {
 		return title;
@@ -51,6 +62,24 @@ public class MsgField {
 		this.recId = recId;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public SendChannel getChanel() {
+		return chanel;
+	}
+	public void setChanel(SendChannel chanel) {
+		this.chanel = chanel;
+	}
 	public SendMessageEvent toSendMessageEvent(){
 		return new SendMessageEvent(this);
 	}
@@ -59,6 +88,12 @@ public class MsgField {
 	}
 	public void setIndateDay(int indateDay) {
 		this.indateDay = indateDay;
+	}
+	public boolean isPersistence() {
+		return persistence;
+	}
+	public void setPersistence(boolean persistence) {
+		this.persistence = persistence;
 	}
 	
 }

@@ -6,7 +6,6 @@ import org.springframework.validation.annotation.Validated;
 
 import com.msg.domain.Admin;
 import com.msg.event.LoginEvent;
-import com.msg.utils.SystemMessage.Hint;
 
 @Validated
 public interface SecurityService {

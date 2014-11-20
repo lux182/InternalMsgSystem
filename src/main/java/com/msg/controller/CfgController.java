@@ -3,7 +3,6 @@ package com.msg.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.msg.service.CfgService;
 import com.msg.utils.Result;
-import com.msg.utils.Views;
 import com.msg.utils.SystemMessage.Hint;
+import com.msg.utils.Views;
 
 @Controller
 @RequestMapping("cfg")

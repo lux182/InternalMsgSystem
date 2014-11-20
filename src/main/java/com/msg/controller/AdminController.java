@@ -1,15 +1,12 @@
 package com.msg.controller;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.msg.controller.fields.AdminField;
 import com.msg.service.AdminService;
 import com.msg.service.ViewService;
 import com.msg.utils.Views;

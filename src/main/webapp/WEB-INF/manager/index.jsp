@@ -57,10 +57,10 @@
 							  <div class="panel-heading">发送消息</div>
 							  <div class="panel-body">
 							    <form action="/api/msg" method="post" class="form-horizontal" style="padding:10px;">
-							    	<div class="form-group">
+							    	<div class="form-group" id="titleDiv">
 								    	<div class="input-group">
 								     	 <div class="input-group-addon">Title</div>
-								     	 <input class="form-control" type="text" name="title" placeholder="Message Title">
+								     	 <input class="form-control" type="text" name="title" placeholder="Message Title" value="系统消息">
 								    	</div>
 								    </div>
 								    <div class="form-group">
@@ -77,16 +77,16 @@
 								    <div class="form-group" id="phoneDiv" style="display:none">
 								    	<div class="input-group">
 								     	 <div class="input-group-addon">Phone</div>
-								     	 <input class="form-control" type="number" name="phone" placeholder="Reciver's Phone">
+								     	 <input class="form-control" type="text" name="phone" placeholder="Reciver's Phone">
 								    	</div>
 								    </div>
 								    <div class="form-group">
 								    	<lable>Channel</lable>
 								    	<select name="chanel" class="form-control" id="channelSelect">
-										  <option value=1>站内信</option>
-										  <option value=2>Baidu推送</option>
-										  <option value=3>短信通知</option>
-										  <option value=4>Email</option>
+										  <option value="INNER" selected>站内信</option>
+										  <option value="BAIDU_PUSH">Baidu推送</option>
+										  <option value="SMS">短信通知</option>
+										  <option value="EMAIL">Email</option>
 										</select>
 								    </div>
 									
@@ -103,6 +103,10 @@
 								    	</div>
 								    </div>
 								    <div class="checkbox">
+								     <label id="persistenceLable">
+								       <input id="persistenceCheck" type="checkbox" name="persistence" checked disabled>Need Persistence
+								     </label>
+								     <span id="optional">
 								     <label>
 								       <input id="indateCheck" type="checkbox" name="timeLimit" >Time limitation Msg 
 								     </label>
@@ -112,6 +116,7 @@
 								     <label>
 								       <input id="privateCheck" type="radio" name="type" value="PRIVATE">Private
 								     </label>
+								     </span>
 								    </div>
 								    <button type="submit" class="btn btn-primary">发送</button>
 							    </form>
@@ -165,6 +170,7 @@
 </div>
 <script>
 	$(function(){
+		
 		$("#publicCheck").click(function(){
 			$("#sendToDiv").hide();
 		});
@@ -175,19 +181,30 @@
 			$("#indateDiv").toggle();
 		});
 		$("#channelSelect").change(function(){
-			if($("#channelSelect").val()==3){
+			$("#persistenceCheck").prop('checked',false);
+			if($("#channelSelect").val()=="SMS"){
 				$("#phoneDiv").show();
 				$("#emailDiv").hide();
-				$(".checkbox").hide();
-			}else if($("#channelSelect").val()==4){
+				$("#optional").hide();
+				$("#titleDiv").hide();
+			}else if($("#channelSelect").val()=="EMAIL"){
 				$("#emailDiv").show();
 				$("#phoneDiv").hide();
-				$(".checkbox").hide();
+				$("#optional").hide();
+				$("#titleDiv").show();
 			}
 			else{
 				$("#emailDiv").hide();
 				$("#phoneDiv").hide();
-				$(".checkbox").show();
+				$("#optional").show();
+				$("#titleDiv").show();
+			}			
+			
+			if($("#channelSelect").val()=="INNER"){
+				$("#persistenceCheck").prop('checked',true);
+				$("#persistenceCheck").attr('disabled',true);
+			}else{
+				$("#persistenceCheck").attr('disabled',false);
 			}
 		});
 	});
