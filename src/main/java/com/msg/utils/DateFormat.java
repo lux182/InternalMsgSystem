@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.msg.utils.SystemMessage.Submit;
+import com.msg.utils.SystemMessage.Hint;
 
 public class DateFormat {
 	
@@ -17,7 +17,7 @@ public class DateFormat {
 		try {
 			return sFormat.parse(str);
 		} catch (ParseException e) {
-			throw new NormalException(Submit.DATE_FORMAT_ERROR);
+			throw new NormalException(Hint.DATE_FORMAT_ERROR);
 		}
 	}
 }

@@ -22,7 +22,7 @@ public class AdminController {
 	ViewService viewService;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView createAdmin(){
+	public ModelAndView adminManage(){
 		return viewService.model(Views.MANAGER_INDEX_PAGE).putCfgs().putMessage().build();
 	}
 }

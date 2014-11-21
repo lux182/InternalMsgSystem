@@ -1,19 +1,18 @@
-package com.msg.controller.fields;
+package com.msg.controller.event;
 
 import javax.validation.constraints.NotNull;
 
-import com.msg.event.BindDeviceEvent;
-import com.msg.utils.SystemMessage.Submit;
+import com.msg.utils.SystemMessage.Hint;
 
-public class UserDeviceField {
+public class BindDeviceEvent {
 	
-	@NotNull(message=Submit.AID_COULD_NOT_BE_NULL)
+	@NotNull(message=Hint.AID_COULD_NOT_BE_NULL)
 	private Long aid;
 	
-	@NotNull(message=Submit.USERID_COULD_NOT_BE_NULL)
+	@NotNull(message=Hint.USERID_COULD_NOT_BE_NULL)
 	private String userId;
 	
-	@NotNull(message=Submit.CHANNELID_COULD_NOT_BE_NULL)
+	@NotNull(message=Hint.CHANNELID_COULD_NOT_BE_NULL)
 	private Long channelId;
 
 	public Long getAid() {
@@ -39,9 +38,5 @@ public class UserDeviceField {
 	public void setChannelId(Long channelId) {
 		this.channelId = channelId;
 	}
-
-	public BindDeviceEvent toBindDeviceEvent() {
-		return new BindDeviceEvent(this);
-	}
-
+	
 }

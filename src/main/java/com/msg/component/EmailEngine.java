@@ -2,8 +2,8 @@ package com.msg.component;
 
 import org.springframework.stereotype.Component;
 
+import com.msg.controller.event.SendMessageEvent;
 import com.msg.enums.SendChannel;
-import com.msg.event.SendMessageEvent;
 
 @Component
 public class EmailEngine extends SendEngine{

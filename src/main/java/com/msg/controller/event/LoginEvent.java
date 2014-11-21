@@ -1,17 +1,17 @@
-package com.msg.event;
+package com.msg.controller.event;
 
-import org.springframework.beans.BeanUtils;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import com.msg.controller.fields.AdminField;
+import com.msg.utils.SystemMessage.Hint;
 
 public class LoginEvent {
 	
+	@NotEmpty(message=Hint.USERNAME_COULD_NOT_BE_EMPTY)
 	private String username;
+	
+	@NotEmpty(message=Hint.PASSWORD_COULD_NOT_BE_EMPTY)
 	private String password;
 	
-	public LoginEvent(AdminField field) {
-		BeanUtils.copyProperties(field, this);
-	}
 	public String getUsername() {
 		return username;
 	}
@@ -24,6 +24,5 @@ public class LoginEvent {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 	
 }

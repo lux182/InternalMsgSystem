@@ -90,7 +90,7 @@
 								    <div class="form-group" id="indateDiv" style="display:none">
 								    	<div class="input-group">
 								     	 <div class="input-group-addon">Indate Days(天)</div>
-								     	 <input class="form-control" type="number" name="indateDay" placeholder="Message Indate Days" value="-1">
+								     	 <input class="form-control" type="number" name="indateDay" placeholder="Message Indate Days" value="1">
 								    	</div>
 								    </div>
 								    <div class="form-group" id="sendToDiv" style="display:none"> 

@@ -13,22 +13,7 @@ import org.springframework.util.StringUtils;
 public class MessageGenerate {
 
     enum Submit {
-    	USERNAME_COULD_NOT_BE_EMPTY("用户名不能为空"),
-        PASSWORD_COULD_NOT_BE_EMPTY("密码不能为空"),
-    	SUBMIT_CONTENT_TOO_BIG("提交内容超出限定范围"),
-    	EMAIL_COULD_NOT_BE_EMPTY("联系邮箱不能为空"),
-        EMAIL_COMPOSE_ERROR("邮箱格式不正确"),
-        EMAIL_LENGTH_ERROR("邮箱长度超出限制"),
-        PHONE_NUMBER_COULD_NOT_BE_EMPTY("手机号码不能为空"),
-        PHONE_NUMBER_COMPOSE_ERROR("手机号码格式不正确"),
-        PHONE_NUMBER_LENGTH_ERROR("手机号码长度超出限制"),
-        MESSAGE_TITLE_COULD_NOT_BE_EMPTY("消息标题不能为空"),
-        MESSAGE_CONTENT_COULD_NOT_BE_EMPTY("消息内容不能为空"),
-        DATE_FORMAT_ERROR("日期格式错误"),
-        INDATE_ERROR("有效时间错误"),
-        AID_COULD_NOT_BE_NULL("aid不能为空"),
-        USERID_COULD_NOT_BE_NULL("userId不能为空"),
-        CHANNELID_COULD_NOT_BE_NULL("channelId不能为空")
+    	
                 ;
         String value;
 
@@ -51,10 +36,34 @@ public class MessageGenerate {
     	CFG_UPDATE_SUCCESSFUL("配置更新成功"),
     	UNEXPECTED_EXCEPTION("未知异常"),
     	ID_HAS_NOT_EXIST("ID不存在"),
+    	MESSAGE_HAS_NOT_EXIST("信息不存在"),
     	MESSAGE_HAS_SEND("信息已发送"),
+    	MESSAGE_HAS_BEEN_UPDATED("信息已更新"),
+    	MESSAGE_HAS_BEEN_DELETED("信息已删除"),
     	PRIVATE_MESSAGE_HAVE_TO_SET_SENDER("私信必须指定发送者"),
     	NOT_SUPPORT_CHANNEL("不支持的发送方式"),
-    	BAIDU_PUSH_ERROR("信息未发送成功，请检查百度推送配置")
+    	BAIDU_PUSH_ERROR("信息未发送成功，请检查百度推送配置"),
+    	USERNAME_COULD_NOT_BE_EMPTY("用户名不能为空"),
+        PASSWORD_COULD_NOT_BE_EMPTY("密码不能为空"),
+    	SUBMIT_CONTENT_TOO_BIG("提交内容超出限定范围"),
+    	EMAIL_COULD_NOT_BE_EMPTY("联系邮箱不能为空"),
+        EMAIL_COMPOSE_ERROR("邮箱格式不正确"),
+        EMAIL_LENGTH_ERROR("邮箱长度超出限制"),
+        PHONE_NUMBER_COULD_NOT_BE_EMPTY("手机号码不能为空"),
+        PHONE_NUMBER_COMPOSE_ERROR("手机号码格式不正确"),
+        PHONE_NUMBER_LENGTH_ERROR("手机号码长度超出限制"),
+        MESSAGE_TITLE_COULD_NOT_BE_EMPTY("消息标题不能为空"),
+        MESSAGE_CONTENT_COULD_NOT_BE_EMPTY("消息内容不能为空"),
+        DATE_FORMAT_ERROR("日期格式错误"),
+        INDATE_ERROR("有效时间错误"),
+        AID_COULD_NOT_BE_NULL("aid不能为空"),
+        USERID_COULD_NOT_BE_NULL("userId不能为空"),
+        CHANNELID_COULD_NOT_BE_NULL("channelId不能为空"),
+        RECID_COULD_NOT_BE_NULL("recId不能为空"),
+        SEND_CHANNEL_COULD_NOT_BE_NULL("必须选择发送方式"),
+        SENDID_COULD_NOT_BE_NULL("senderId不能为空"),
+        SENDERNAME_COULD_NOT_BE_NULL("senderName不能为空"),
+        MSGID_COULD_NOT_BE_NULL("msgId不能为空"),
     	;
         String value;
 
@@ -71,9 +80,8 @@ public class MessageGenerate {
             String classfile = System.getProperty("user.dir") + "/src/main/java/com/msg/utils/SystemMessage.java";
             String messageFile = System.getProperty("user.dir") + "/src/main/resources/message_zh.properties";
             saveFile(classfile,systemMessageClass.replace("{content}", 
-                    generateSubClassFile(Submit.class)+generateSubClassFile(Hint.class)));
-            saveFile(messageFile,generateMessageFile(
-                    Submit.class)+"\n"+generateMessageFile(Hint.class));
+                    generateSubClassFile(Hint.class)));
+            saveFile(messageFile,generateMessageFile(Hint.class));
             p("Ok");
     }
     private static void saveFile(String filepath,String content) throws IOException{

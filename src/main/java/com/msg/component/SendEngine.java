@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.msg.controller.event.SendMessageEvent;
 import com.msg.enums.SendChannel;
-import com.msg.event.SendMessageEvent;
 import com.msg.utils.NormalException;
 import com.msg.utils.SystemMessage.Hint;
 
