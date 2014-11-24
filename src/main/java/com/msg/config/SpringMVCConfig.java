@@ -46,6 +46,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
+import com.msg.interceptor.RecIdInterceptor;
 import com.msg.service.MyShiroRealm;
 
 @Configuration
@@ -149,6 +150,7 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LocaleChangeInterceptor());
+		registry.addInterceptor(new RecIdInterceptor());
 	}
 
 	

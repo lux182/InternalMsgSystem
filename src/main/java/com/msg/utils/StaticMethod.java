@@ -37,6 +37,7 @@ public class StaticMethod {
     }
 
     public static String getMessage(String key) {
+    	if(StringUtils.isEmpty(key)) return null;
         return getMessage(key, null);
     }
 

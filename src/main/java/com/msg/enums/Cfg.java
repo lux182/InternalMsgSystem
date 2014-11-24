@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Cfg {
+	SESSIONINFO_URL,
 	//Baidu push serivce
 	BAIDU_PUSH_API_KEY,
 	BAIDU_PUSH_SECRET_KEY
