@@ -1,6 +1,7 @@
 package mqtest;
 
 import java.io.IOException;
+import java.util.Date;
 
 import com.alibaba.fastjson.JSON;
 import com.msg.enums.MessageType;
@@ -32,8 +33,10 @@ public class RabbitMqClient {
         event.setSenderName("admin");
         event.setTitle("系统消息");
         event.setContent("你有100元红包到账");
-        event.setChanel(SendChannel.BAIDU_PUSH);
+        event.setChanel(SendChannel.INNER);
         event.setType(MessageType.PRIVATE);
+        event.setTimeLimit(true);
+        event.setIndateDay(1);
         event.setRecId(1L);
         
         channel.basicPublish(EXCHANGE_NAME, "message.internal", null, JSON.toJSON(event).toString().getBytes());

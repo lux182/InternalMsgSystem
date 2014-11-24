@@ -155,7 +155,7 @@
 							          <td>
 							          <c:if test="${empty msg.indate}">一直有效</c:if>
 							          <c:if test="${!empty msg.indate}">
-							          <fmt:formatDate value="${msg.indate}" pattern="yyyy-MM-dd mm:hh" />
+							          <fmt:formatDate value="${msg.indate}" type="both" />
 							          </c:if>
 							          </td>
 							          <td>${msg.type.name()}</td>

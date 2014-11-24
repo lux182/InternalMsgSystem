@@ -58,6 +58,7 @@ public class SendMessageEvent {
 		if(this.timeLimit){
 			long time = System.currentTimeMillis()+this.getIndateDay()*24*60*60*1000;
 			this.indate=new Date(time);
+			return null;
 		}
 		return indate;
 	}

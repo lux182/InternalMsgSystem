@@ -19,6 +19,9 @@ public class MessageProcessor {
 	MessageService messageService;
 	
 	public void execute(byte[] bytes){
+		if(bytes==null){
+			return;
+		}
 		String msg = new String(bytes);
 		System.out.println("# Recived MSG:"+msg);
 		if(StringUtils.isEmpty(msg)){
