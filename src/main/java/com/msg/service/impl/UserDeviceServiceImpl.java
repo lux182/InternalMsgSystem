@@ -4,8 +4,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.msg.controller.event.BindDeviceEvent;
 import com.msg.domain.UserDevice;
+import com.msg.event.BindDeviceEvent;
 import com.msg.repo.UserDeviceRepo;
 import com.msg.service.UserDeviceService;
 

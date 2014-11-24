@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.msg.controller.event.BindDeviceEvent;
-import com.msg.controller.event.GetMessageEvent;
-import com.msg.controller.event.SendMessageEvent;
-import com.msg.controller.event.UpdateMessageEvent;
 import com.msg.domain.Admin;
 import com.msg.enums.MessageStatus;
 import com.msg.enums.MessageType;
+import com.msg.event.BindDeviceEvent;
+import com.msg.event.GetMessageEvent;
+import com.msg.event.SendMessageEvent;
+import com.msg.event.UpdateMessageEvent;
 import com.msg.service.MessageService;
 import com.msg.service.SecurityService;
 import com.msg.service.UserDeviceService;

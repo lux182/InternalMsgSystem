@@ -7,12 +7,12 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.msg.controller.event.SendMessageEvent;
 import com.msg.domain.Message;
 import com.msg.domain.MessageLog;
 import com.msg.enums.MessageStatus;
 import com.msg.enums.MessageType;
 import com.msg.enums.SendChannel;
+import com.msg.event.SendMessageEvent;
 import com.msg.repo.MessageLogRepo;
 import com.msg.repo.MessageRepo;
 import com.msg.service.SecurityService;

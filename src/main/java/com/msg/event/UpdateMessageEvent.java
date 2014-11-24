@@ -1,4 +1,4 @@
-package com.msg.controller.event;
+package com.msg.event;
 
 import javax.validation.constraints.NotNull;
 
@@ -6,49 +6,25 @@ import com.msg.enums.MessageStatus;
 import com.msg.enums.MessageType;
 import com.msg.utils.SystemMessage.Hint;
 
-public class GetMessageEvent {
+public class UpdateMessageEvent {
 	
 	@NotNull(message=Hint.RECID_COULD_NOT_BE_NULL)
 	private Long recId;
-	
+	@NotNull(message=Hint.MSGID_COULD_NOT_BE_NULL)
+	private Long msgId;
 	private MessageStatus status;
-	
 	private MessageType type;
-	
-	private int page=0;
-	private int pageSize=10;
-	private String sort="pubdate";
-	private String order = "DESC";
-	
 	public Long getRecId() {
 		return recId;
 	}
 	public void setRecId(Long recId) {
 		this.recId = recId;
 	}
-	public int getPage() {
-		return page;
+	public Long getMsgId() {
+		return msgId;
 	}
-	public void setPage(int page) {
-		this.page = page;
-	}
-	public int getPageSize() {
-		return pageSize;
-	}
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-	public String getSort() {
-		return sort;
-	}
-	public void setSort(String sort) {
-		this.sort = sort;
-	}
-	public String getOrder() {
-		return order;
-	}
-	public void setOrder(String order) {
-		this.order = order;
+	public void setMsgId(Long msgId) {
+		this.msgId = msgId;
 	}
 	public MessageStatus getStatus() {
 		return status;

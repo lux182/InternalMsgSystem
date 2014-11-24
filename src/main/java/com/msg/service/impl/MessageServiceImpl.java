@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.msg.component.SendEngine;
-import com.msg.controller.event.GetMessageEvent;
-import com.msg.controller.event.SendMessageEvent;
-import com.msg.controller.event.UpdateMessageEvent;
 import com.msg.domain.Message;
 import com.msg.domain.MessageLog;
 import com.msg.enums.MessageStatus;
 import com.msg.enums.SendChannel;
+import com.msg.event.GetMessageEvent;
+import com.msg.event.SendMessageEvent;
+import com.msg.event.UpdateMessageEvent;
 import com.msg.repo.MessageLogRepo;
 import com.msg.repo.MessageRepo;
 import com.msg.service.MessageService;

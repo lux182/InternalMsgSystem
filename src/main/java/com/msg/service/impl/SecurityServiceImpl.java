@@ -16,8 +16,8 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.msg.controller.event.LoginEvent;
 import com.msg.domain.Admin;
+import com.msg.event.LoginEvent;
 import com.msg.repo.AdminRepo;
 import com.msg.service.SecurityService;
 import com.msg.utils.NormalException;

@@ -5,10 +5,10 @@ import javax.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 
-import com.msg.controller.event.GetMessageEvent;
-import com.msg.controller.event.SendMessageEvent;
-import com.msg.controller.event.UpdateMessageEvent;
 import com.msg.domain.Message;
+import com.msg.event.GetMessageEvent;
+import com.msg.event.SendMessageEvent;
+import com.msg.event.UpdateMessageEvent;
 
 @Validated
 public interface MessageService extends BaseService<Message>{

@@ -1,4 +1,4 @@
-package com.msg.controller.event;
+package com.msg.event;
 
 import java.util.Date;
 
