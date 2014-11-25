@@ -26,10 +26,10 @@ public abstract class SendEngine {
 	}
 	
 	public static void sendMessage(@NotNull SendMessageEvent event){
-		if(SendEngine.MAP.get(event.getChanel())==null){
+		if(SendEngine.MAP.get(event.getChannel())==null){
 			throw new NormalException(Hint.NOT_SUPPORT_CHANNEL);
 		}else{
-			SendEngine.MAP.get(event.getChanel()).send(event);
+			SendEngine.MAP.get(event.getChannel()).send(event);
 		}
 	}
 	

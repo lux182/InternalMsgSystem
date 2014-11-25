@@ -2,6 +2,7 @@ package com.msg.controller;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,8 +41,8 @@ public class ApiController {
 	
 	@RequestMapping(value="msg",method=RequestMethod.POST)
 	@ResponseBody
+	@RequiresAuthentication
 	public Object sendInternalMsg(SendMessageEvent event){
-		
 		if(null == event.getSendId()||StringUtils.isEmpty(event.getSenderName())){
 			Admin sender = securityService.getAuthedUser();
 			if(MessageType.PUBLIC.equals(event.getType())){
@@ -96,9 +97,10 @@ public class ApiController {
 		messageService.updateMsg(event);
 		return Result.setMessage(Hint.MESSAGE_HAS_BEEN_DELETED);
 	}
-	@RequestMapping(value="userDevice",method=RequestMethod.POST)
+	@RequestMapping(value="{recId}/device",method=RequestMethod.POST)
 	@ResponseBody
-	public Object sendInternalMsg(BindDeviceEvent event){
+	public Object sendInternalMsg(@PathVariable Long recId, BindDeviceEvent event){
+		event.setAid(recId);
 		userDeviceService.bindUserDevice(event);
 		return Result.setMessage(Hint.MESSAGE_HAS_SEND);
 	}

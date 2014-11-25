@@ -39,7 +39,7 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 	public void sendMessage(SendMessageEvent event) {
 		SendEngine.sendMessage(event);
 		if(event.isPersistence()){
-			event.setChanel(SendChannel.INNER);
+			event.setChannel(SendChannel.INNER);
 			SendEngine.sendMessage(event);
 		}
 	}

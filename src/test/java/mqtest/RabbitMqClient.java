@@ -33,7 +33,7 @@ public class RabbitMqClient {
         event.setSenderName("admin");
         event.setTitle("系统消息");
         event.setContent("你有100元红包到账");
-        event.setChanel(SendChannel.INNER);
+        event.setChannel(SendChannel.INNER);
         event.setType(MessageType.PRIVATE);
         event.setTimeLimit(true);
         event.setIndateDay(1);

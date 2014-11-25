@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import com.msg.domain.Message;
 import com.msg.domain.MessageLog;
@@ -38,7 +39,9 @@ public class InnerEngine extends SendEngine{
 	@Override
 	@Transactional
 	public void send(SendMessageEvent event) {
-		
+		if(StringUtils.isEmpty(event.getTitle())){
+			throw new NormalException(Hint.MESSAGE_TITLE_COULD_NOT_BE_EMPTY);
+		}
 		if(event.isTimeLimit()){
 			Date indate = event.getIndate();
 			if(indate==null||System.currentTimeMillis()>=indate.getTime()){

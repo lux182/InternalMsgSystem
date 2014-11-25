@@ -15,7 +15,7 @@ import com.msg.validator.PhoneNumber;
 public class SendMessageEvent {
 	
 	@NotNull(message=Hint.SEND_CHANNEL_COULD_NOT_BE_NULL)
-	private SendChannel chanel;
+	private SendChannel channel;
 	
 	@NotEmpty(message=Hint.MESSAGE_CONTENT_COULD_NOT_BE_EMPTY)
 	private String content;
@@ -37,15 +37,13 @@ public class SendMessageEvent {
 	@NotNull(message=Hint.SENDID_COULD_NOT_BE_NULL)
 	private Long sendId;
 	private boolean timeLimit=false;
-
-	@NotEmpty(message=Hint.MESSAGE_TITLE_COULD_NOT_BE_EMPTY)
 	private String title;
 	
 	private MessageType type = MessageType.PUBLIC;
 	private String url;
 	
-	public SendChannel getChanel() {
-		return chanel;
+	public SendChannel getChannel() {
+		return channel;
 	}
 	public String getContent() {
 		return content;
@@ -56,11 +54,13 @@ public class SendMessageEvent {
 	
 	public Date getIndate() {
 		if(this.timeLimit){
-			long time = System.currentTimeMillis()+this.getIndateDay()*24*60*60*1000;
-			this.indate=new Date(time);
-			return null;
+			if(indate==null){
+				long time = System.currentTimeMillis()+this.getIndateDay()*24*60*60*1000;
+				this.indate=new Date(time);
+			}
+			return indate;
 		}
-		return indate;
+		return null;
 	}
 	
 	public int getIndateDay() {
@@ -93,8 +93,8 @@ public class SendMessageEvent {
 	public boolean isTimeLimit() {
 		return timeLimit;
 	}
-	public void setChanel(SendChannel chanel) {
-		this.chanel = chanel;
+	public void setChannel(SendChannel channel) {
+		this.channel = channel;
 	}
 	public void setContent(String content) {
 		this.content = content;
