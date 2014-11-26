@@ -2,6 +2,7 @@ package com.msg.component;
 
 import java.util.Date;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -86,6 +87,7 @@ public class InnerEngine extends SendEngine{
 		}
 	}
 
+	@PostConstruct
 	@Override
 	public void initEngine() {
 		

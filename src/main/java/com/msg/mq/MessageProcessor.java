@@ -22,12 +22,12 @@ public class MessageProcessor {
 		if(bytes==null){
 			return;
 		}
-		String msg = new String(bytes);
-		System.out.println("# Recived MSG:"+msg);
-		if(StringUtils.isEmpty(msg)){
-			return;
-		}
 		try{
+			String msg = new String(bytes,"UTF-8");
+			System.out.println("# Recived MSG:"+msg);
+			if(StringUtils.isEmpty(msg)){
+				return;
+			}
 			SendMessageEvent event = JSON.toJavaObject(JSON.parseObject(msg), SendMessageEvent.class);
 			messageService.sendMessage(event);
 		}catch(Exception e){
