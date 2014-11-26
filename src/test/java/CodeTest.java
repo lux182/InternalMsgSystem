@@ -1,11 +1,11 @@
 import com.msg.enums.Cfg;
+import com.msg.utils.StaticMethod;
 
 
 public class CodeTest {
 
 	public static void main(String[] args) {
-		Cfg.valueOf("BAIDU_PUSH_API_KEY1").setValue("12345");
-		System.out.print(Cfg.BAIDU_PUSH_API_KEY.getValue());
+		System.out.print(new String(StaticMethod.generatePassword("admin", "d1anr0ng")));
 	}
 
 }

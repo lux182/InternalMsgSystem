@@ -10,6 +10,8 @@ import com.msg.domain.CfgDomain;
 
 @Validated
 public interface CfgService extends BaseService<CfgDomain>{
+	void initCfgEnum();
+	
 	void initCfg();
 
 	void update(@NotNull Map<String, String[]> parameterMap);

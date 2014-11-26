@@ -22,10 +22,11 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 	}
 
 	@Override
-	public Admin createAdmin(String username, String password) {
+	public Admin createAdmin(String username, String password,String nickname) {
 		if(adminRepo.findByUsername(username)==null){
 			Admin admin = new Admin();
 			admin.setUsername(username);
+			admin.setNickname(nickname);
 			admin.setPassword(StaticMethod.generatePassword(username, password));
 			return adminRepo.save(admin);
 		}else{

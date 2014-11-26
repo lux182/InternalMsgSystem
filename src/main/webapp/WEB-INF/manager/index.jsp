@@ -56,7 +56,7 @@
 							<div class="panel panel-default">
 							  <div class="panel-heading">发送消息</div>
 							  <div class="panel-body">
-							    <form action="/api/msg" method="post" class="form-horizontal" style="padding:10px;">
+							    <form action="/msgapi/msg" method="post" class="form-horizontal" style="padding:10px;">
 							    	<div class="form-group" id="titleDiv">
 								    	<div class="input-group">
 								     	 <div class="input-group-addon">Title</div>
@@ -101,7 +101,7 @@
 								    </div>
 								    <div class="form-group">
 								    	<lable>Channel</lable>
-								    	<select name="chanel" class="form-control" id="channelSelect">
+								    	<select name="channel" class="form-control" id="channelSelect">
 										  <option value="INNER" selected>站内信</option>
 										  <option value="BAIDU_PUSH">Baidu推送</option>
 										  <option value="SMS">短信通知</option>

@@ -3,6 +3,7 @@ package com.msg.component;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -35,6 +36,7 @@ import com.msg.enums.Cfg;
 import com.msg.enums.MessageType;
 import com.msg.enums.SendChannel;
 import com.msg.event.SendMessageEvent;
+import com.msg.repo.CfgRepo;
 import com.msg.repo.UserDeviceRepo;
 import com.msg.utils.NormalException;
 import com.msg.utils.SystemMessage.Hint;
@@ -46,6 +48,9 @@ public class BaiduPushEngine extends SendEngine {
 
 	@Resource
 	UserDeviceRepo userDeviceRepo;
+	
+	@Resource
+	CfgRepo cfgRepo;
 	
 	public BaiduPushEngine() {
 		this.register(SendChannel.BAIDU_PUSH);
@@ -93,13 +98,12 @@ public class BaiduPushEngine extends SendEngine {
         NONE, BROWSER, PC, ANDROID, IOS, WINPHONE;
     }
 
+    @PostConstruct
+    @Override
     public void initEngine() {
         channelClient = new BaiduChannelClient(new ChannelKeyPair(
-                Cfg.BAIDU_PUSH_API_KEY.getValue(), Cfg.BAIDU_PUSH_SECRET_KEY.getValue()));
-    }
-
-    private void init(String apiKey, String secretKey) {
-        channelClient = new BaiduChannelClient(new ChannelKeyPair(apiKey, secretKey));
+        		cfgRepo.findByCfgKey(Cfg.BAIDU_PUSH_API_KEY.name()).getCfgVal(),
+        		cfgRepo.findByCfgKey(Cfg.BAIDU_PUSH_SECRET_KEY.name()).getCfgVal()));
     }
     
     public void initIOSCert(String name, String description, String devCert, String releaseCert) {

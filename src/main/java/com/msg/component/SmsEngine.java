@@ -1,5 +1,7 @@
 package com.msg.component;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 
 import com.msg.enums.SendChannel;
@@ -17,6 +19,7 @@ public class SmsEngine extends SendEngine{
 		System.out.print("SMS");
 	}
 
+	@PostConstruct
 	@Override
 	public void initEngine() {
 		

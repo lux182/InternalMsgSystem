@@ -30,9 +30,10 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     static {
         shiroMap.put("/", "anon");
+        shiroMap.put("/init", "anon");
         shiroMap.put("/login", "anon");
         shiroMap.put("/static/**", "anon");
-        shiroMap.put("/api/**", "anon");
+        shiroMap.put("/msgapi/**", "anon");
         shiroMap.put("/**", "authc");
     }
 

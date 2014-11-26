@@ -27,7 +27,7 @@ import com.msg.utils.SystemMessage.Hint;
 import com.msg.utils.SystemName;
 
 @Controller
-@RequestMapping("api")
+@RequestMapping("msgapi")
 public class ApiController {
 	
 	@Resource
@@ -102,6 +102,6 @@ public class ApiController {
 	public Object sendInternalMsg(@PathVariable Long recId, BindDeviceEvent event){
 		event.setAid(recId);
 		userDeviceService.bindUserDevice(event);
-		return Result.setMessage(Hint.MESSAGE_HAS_SEND);
+		return Result.setMessage(Hint.DEVICE_HAS_BEEN_UPDATE);
 	}
 }

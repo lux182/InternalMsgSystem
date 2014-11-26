@@ -3,6 +3,9 @@ package com.msg.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,25 +23,13 @@ public class CfgServiceImpl extends BaseServiceImpl<CfgDomain> implements CfgSer
 
 	private static final Logger logger = Logger.getLogger(CfgServiceImpl.class);
 	
+	@Resource
 	CfgRepo cfgRepo;
-
-	@Autowired
-	public void setCfgRepo(CfgRepo cfgRepo) {
-		this.cfgRepo = cfgRepo;
-		this.initCfg();
-		logger.info("Cfg init successful");
-		SendEngine.init();
-	}
-
+	
 	@Override
 	public void initCfg() {
-		List<String> keys = Cfg.names();
-		for(CfgDomain cfg :cfgRepo.findAll()){
-			if(keys.contains(cfg.getCfgKey())){
-				Cfg cfgEnum = Cfg.valueOf(cfg.getCfgKey());
-				cfgEnum.setValue(cfg.getCfgVal());
-			}
-		}
+		initCfgEnum();
+		SendEngine.init();
 	}
 
 	@Override
@@ -62,6 +53,18 @@ public class CfgServiceImpl extends BaseServiceImpl<CfgDomain> implements CfgSer
 			}
 		}
 		SendEngine.init();
+	}
+
+	@PostConstruct
+	@Override
+	public void initCfgEnum() {
+		List<String> keys = Cfg.names();
+		for(CfgDomain cfg :cfgRepo.findAll()){
+			if(keys.contains(cfg.getCfgKey())){
+				Cfg cfgEnum = Cfg.valueOf(cfg.getCfgKey());
+				cfgEnum.setValue(cfg.getCfgVal());
+			}
+		}
 	}
 	
 }

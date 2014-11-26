@@ -10,6 +10,6 @@ public interface AdminService extends BaseService<Admin>{
 
 	Admin getAdminByUsername(@NotEmpty String username);
 
-	Admin createAdmin(@NotEmpty String username, @NotEmpty String password);
+	Admin createAdmin(@NotEmpty String username, @NotEmpty String password, String nickname);
 
 }

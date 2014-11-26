@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.msg.service.AdminService;
@@ -25,4 +26,5 @@ public class AdminController {
 	public ModelAndView adminManage(){
 		return viewService.model(Views.MANAGER_INDEX_PAGE).putCfgs().putMessage().build();
 	}
+	
 }

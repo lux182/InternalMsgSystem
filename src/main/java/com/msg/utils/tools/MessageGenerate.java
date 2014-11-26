@@ -63,6 +63,7 @@ public class MessageGenerate {
         SEND_CHANNEL_COULD_NOT_BE_NULL("必须选择发送方式"),
         SENDID_COULD_NOT_BE_NULL("senderId不能为空"),
         SENDERNAME_COULD_NOT_BE_NULL("senderName不能为空"),
+        DEVICE_HAS_BEEN_UPDATE("设备信息已更新"),
         MSGID_COULD_NOT_BE_NULL("msgId不能为空"),
     	;
         String value;
