@@ -31,8 +31,7 @@ public class MessageProcessor {
 			SendMessageEvent event = JSON.toJavaObject(JSON.parseObject(msg), SendMessageEvent.class);
 			messageService.sendMessage(event);
 		}catch(Exception e){
-			System.out.print(e.getMessage());
-			logger.info(StaticMethod.getMessage(e.getMessage()), e);
+			logger.debug(StaticMethod.getMessage(e.getMessage()), e);
 		}
 	}
 }

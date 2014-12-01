@@ -26,13 +26,12 @@ public class RecIdInterceptor extends HandlerInterceptorAdapter{
 		if(!StringUtils.isEmpty(recId)){
 			StringBuffer url = request.getRequestURL();
 			String result=HttpClientUtils.get(Cfg.SESSIONINFO_URL.getValue(),request.getHeader("Cookie"));
-			logger.info("url:"+url+" result:"+result);
 			if(result!=null){
 				if(result.indexOf("\"actorId\":"+recId)<0){
+					logger.debug("url:"+url+" result:"+result);
 					throw new NormalException(Hint.USER_HAS_BEEN_NOT_LOGIN);
 				};
 			}
-			
 		}
 		return super.preHandle(request, response, handler);
 	}

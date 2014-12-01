@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -46,6 +47,8 @@ import com.msg.wrapper.NotificationMessage;
 @Component
 public class BaiduPushEngine extends SendEngine {
 
+	private static final Logger logger = Logger.getLogger(BaiduPushEngine.class);
+	
 	@Resource
 	UserDeviceRepo userDeviceRepo;
 	
@@ -58,6 +61,9 @@ public class BaiduPushEngine extends SendEngine {
 
 	@Override
 	public void send(SendMessageEvent event) {
+		if(StringUtils.isEmpty(event.getTitle())){
+			throw new NormalException(Hint.MESSAGE_TITLE_COULD_NOT_BE_EMPTY);
+		}
 		NotificationMessage msg = new NotificationMessage();
 		msg.setTitle(event.getTitle());
 		msg.setDescription(event.getContent());
@@ -435,14 +441,12 @@ public class BaiduPushEngine extends SendEngine {
     }
 
     private void handleClientException(ChannelClientException e) {
-        // TODO: how to handle client side exceptions for baidu push services
-        e.printStackTrace();
+    	logger.debug("Handle Client Exception",e);
     }
 
     private void handleServerException(ChannelServerException e) {
-        // TODO: how to handle server side exceptions for baidu push services
-        System.out.println(String.format("request_id: %d, error_code: %d, error_message: %s", e.getRequestId(),
-                e.getErrorCode(), e.getErrorMsg()));
+    	logger.debug(String.format("request_id: %d, error_code: %d, error_message: %s", e.getRequestId(),
+                e.getErrorCode(), e.getErrorMsg()),e);
     }
 
 }

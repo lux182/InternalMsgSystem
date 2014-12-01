@@ -14,7 +14,7 @@
 
 	<rabbit:admin connection-factory="connectionFactory" />
 
-	<rabbit:queue name="internalMsgQ" durable="true" auto-delete="true" exclusive="false"/>
+	<rabbit:queue name="internalMsgQ" durable="true" auto-delete="false" exclusive="false"/>
 	
 	<!--路由设置 将队列绑定，属于topic类型 -->
 	<rabbit:topic-exchange name="msgExchange">

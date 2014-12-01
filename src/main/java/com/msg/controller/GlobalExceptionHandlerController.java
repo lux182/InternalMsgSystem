@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.msg.utils.NormalException;
 import com.msg.utils.Result;
+import com.msg.utils.SystemMessage.Hint;
 
 @ControllerAdvice
 public class GlobalExceptionHandlerController {
@@ -70,8 +71,8 @@ public class GlobalExceptionHandlerController {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ResponseBody
 	public Object processUnexpectedError(Exception ex) {
-		logger.info("Unexpected Exception Error", ex);
-		return ex;
+		logger.debug("Unexpected Exception Error", ex);
+		return Result.setMessage(Hint.UNEXPECTED_EXCEPTION);
 	}
 
 }
