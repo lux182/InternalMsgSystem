@@ -54,7 +54,7 @@ dependencies {
     providedRuntime 'org.apache.tomcat:tomcat-servlet-api:8.0.9'
 }
 gretty {
-  port = 8080
+  httpPort = 8080
   contextPath = '/'
   servletContainer = 'tomcat8'
 }
